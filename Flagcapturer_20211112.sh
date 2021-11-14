@@ -1,12 +1,15 @@
 #!/bin/bash
 
+# Created from:
+# https://www.reddit.com/r/bash/comments/qsdu4x/resolving_thousands_of_domains_faster_way_to_do/
+#
 # If you are going to accellarate the queries, you'll probably need to spread them out also.
 # 1. Cloudflare:         1.1.1.1 1.0.0.1
 # 2. Google Public DNS:  8.8.8.8 8.8.4.4
 # 3. Norton ConnectSafe: 199.85.126.10 199.85.127.10
 # 4. Comodo Secure DNS:  8.26.56.26 8.20.247.20
 # 5. Quad9:              9.9.9.9 149.112.112.112
-
+#
 # The key here is going to be parallel processing.
 # However, I'm not going to assume you can install new software on the client you a using.
 # I would take your "hosts" file and split them up each time the program is run,
@@ -42,7 +45,7 @@ done
 helps() {
   echo "
   Usage:
-      $0 -c 4 -d hosts.txt
+    $0 -c 4 -d hosts.txt
 
   -h | --help       This message.
 
