@@ -3,6 +3,29 @@
 # Created from:
 # https://www.reddit.com/r/bash/comments/qsdu4x/resolving_thousands_of_domains_faster_way_to_do/
 #
+# Title: Resolving thousands of domains: faster way to do it? (code attached)
+# Post: Hi there,
+#
+# I routinely need to do a lookup on thousands of domains and record the IP attached
+# to those domains. I've created a bash script to do this, but it takes a long time.
+# I think this mainly has to do with the time it takes to do the resolving with the
+# DNS itself, but not sure. Do you guys have any tips on how to do this more
+# effectively? E.g. use parallel or insert xargs -P 4 -L 1 to get more concurrent
+# look-ups? Maybe add multiple DNS resolvers in the script (no idea how to though).
+#
+# Here's an excerpt from my code. The domains are stored in the hosts file and the
+# output is written to the IP's file.
+#
+# while IFS= read -r host
+# do
+#     if [[ -n "$host" ]]
+#     then
+#         ips=$(dig @8.8.8.8 +short "$host" | grep '^[[:digit:].]*$' | xargs )
+#         printf "%s\t%s\n" "$host" "$ips"
+#     fi
+# done <hosts >ips
+
+# Response:
 # If you are going to accellarate the queries, you'll probably need to spread them out also.
 # 1. Cloudflare:         1.1.1.1 1.0.0.1
 # 2. Google Public DNS:  8.8.8.8 8.8.4.4
