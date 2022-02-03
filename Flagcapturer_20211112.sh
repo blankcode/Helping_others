@@ -69,11 +69,8 @@ helps() {
   echo "
   Usage:
     $0 -c 4 -d hosts.txt
-
   -h | --help       This message.
-
   -c | --cores      Cores to use.
-
   -d | --domains    Original Hosts file from the CLI argument.
   "
 }
